@@ -47,6 +47,16 @@
   color: var(--first-color);
   cursor: pointer;
 }
+.clock__color_theme {
+  position: absolute;
+  top: -1rem;
+  right: -3rem;
+  display: flex;
+  padding: 0.25rem;
+  border-radius: 50%;
+  color: var(--first-color);
+  cursor: pointer;
+}
 
 body.dark-theme {
   --title-color: hsl(var(--hue-color), 12%, 95%);

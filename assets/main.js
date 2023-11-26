@@ -99,3 +99,29 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  var colors = [200, 300, 335, 400, 500, 600, 700];
+
+  var currentIndex = 0;
+
+  var changeColorButton = document.getElementById("changeColorButton");
+
+  changeColorButton.addEventListener("click", function () {
+    var currentColor = colors[currentIndex];
+    document.documentElement.style.setProperty("--hue-color", currentColor);
+
+    localStorage.setItem("hueColor", currentColor.toString());
+
+    currentIndex = (currentIndex + 1) % colors.length;
+  });
+
+  var storedColor = localStorage.getItem("hueColor");
+  if (storedColor !== null) {
+    document.documentElement.style.setProperty("--hue-color", storedColor);
+
+    currentIndex = colors.indexOf(parseInt(storedColor, 10));
+
+    currentIndex = currentIndex !== -1 ? currentIndex : 0;
+  }
+});
